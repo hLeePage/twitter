@@ -4,11 +4,8 @@ Doorkeeper.configure do
 
   # This block will be called to check whether the resource owner is authenticated or not.
   resource_owner_authenticator do
-    Doorkeeper.configure do
-  resource_owner_authenticator do
-    User.find_by_id(session[:current_user_id])
-  end
-end
+        User.find_by_id(session[:current_user_id]) || redirect_to(routes.login_url)
+
     # Put your resource owner authentication logic here.
     # Example implementation:
     #   User.find_by_id(session[:user_id]) || redirect_to(new_user_session_url)
@@ -97,7 +94,7 @@ end
   #   http://tools.ietf.org/html/rfc6819#section-4.4.2
   #   http://tools.ietf.org/html/rfc6819#section-4.4.3
   #
-  grant_flows %w(authorization_code client_credentials)
+
 
   # Under some circumstances you might want to have applications auto-approved,
   # so that the user skips the authorization step.
@@ -108,9 +105,8 @@ end
 
   # WWW-Authenticate Realm (default "Doorkeeper").
   # realm "Doorkeeper"
-  Doorkeeper.configure do
+  grant_flows %w(authorization_code client_credentials password)
   resource_owner_from_credentials do |routes|
     User.authenticate!(params[:username], params[:password])
   end
-end
 end
