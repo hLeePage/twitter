@@ -4,7 +4,7 @@ Doorkeeper.configure do
 
   # This block will be called to check whether the resource owner is authenticated or not.
   resource_owner_authenticator do
-        User.find_by_id(session[:current_user_id]) || redirect_to(routes.login_url)
+        User.find_by_id(session[:current_user_id])
 
     # Put your resource owner authentication logic here.
     # Example implementation:
