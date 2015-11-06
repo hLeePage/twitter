@@ -15,14 +15,14 @@ RSpec.describe "Tweets" do
     end
   end
 
-  describe "#show" do
-    it "shows a tweet" do
-      get tweets_path, tweet
-
-      expect(response).to have_http_status(:success)
-      expect(json["data"][0]["attributes"]["body"]).to eq tweet["body"]
-    end
-  end
+  # describe "#show" do
+  #   it "shows a tweet" do
+  #     get tweets_path, tweet
+  #
+  #     expect(response).to have_http_status(:success)
+  #     expect(json["data"][0]["attributes"]["body"]).to eq tweet["body"]
+  #   end
+  # end
 
   # describe "#create" do
   #   before do

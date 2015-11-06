@@ -1,5 +1,5 @@
-require 'rails-helper'
-require 'request-helper'
+require 'rails_helper'
+require 'request_helper'
 
 RSpec.describe UsersController do
   let(:user1) { FactoryGirl.create :user }
