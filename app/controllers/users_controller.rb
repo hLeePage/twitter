@@ -1,9 +1,14 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :update, :destroy]
-
+  before_action :authenticate_user!, only: [:follow, :unfollow]
   def index
-    @users = User.all
-    render json: @users
+    if params[:q]
+      users = User.where("email ILIKE ?", "%#{params[:q]}%")
+    else
+      users = User
+    end
+    users = users.page(params[:page]).per(params[:size])
+    render json: users, include: params[:include]
   end
 
   def follow
@@ -17,7 +22,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    render json: @user
+    render json: @user, include: params[:include]
   end
 
   def create
@@ -44,10 +49,6 @@ class UsersController < ApplicationController
     head :no_content
   end
 
-  #def self.authenticate!(email, password)
-  # user = User.find_by_email(email)
-  #user.authenticate(password)
-  #end
   private
 
   def set_user
