@@ -3,7 +3,6 @@ source 'https://rubygems.org'
 ruby '2.2.3'
 
 gem 'rails', '4.2.4'
-gem 'spring', :group => :development
 gem 'activerecord'
 gem 'active_model_serializers', '~> 0.10.0.rc3'
 gem 'acts_as_follower'
