@@ -14,11 +14,15 @@ gem 'puma'
 gem 'rack-cors', require: 'rack/cors'
 gem 'rails-api'
 gem 'rails_12factor'
+gem 'pundit'
 
 group :development do
   gem 'foreman'
   gem 'rails-erd'
   gem 'pry'
+  gem 'spring'
+  gem 'spring-commands-rspec'
+  gem 'guard-rspec', require: false
 end
 
 group :test, :development do
