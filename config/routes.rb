@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   use_doorkeeper
 
+  
   resources :tweets, except: [:new, :edit, :destroy]
   resources :users, except: [:new, :edit] do
     put :follow

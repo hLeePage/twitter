@@ -2,6 +2,8 @@ class TweetsController < ApplicationController
   before_action :authenticate_user!, only: [:create]
   before_action :set_tweet, only: [:show, :update, :destroy]
 
+
+
   def index
     if params[:q]
       tweets = Tweet.where("email ILIKE ?", "%#{params[:q]}%")
@@ -9,12 +11,23 @@ class TweetsController < ApplicationController
       tweets = Tweet
     end
     tweets = tweets.page(params[:page]).per(params[:size])
-    render json: tweets, include: params[:include]
+
+    respond_to do |format|
+       format.html { render locals: { tweets: tweets} }
+       format.json { render json: @user, include: params[:include] }
+    end
   end
 
+
+
   def show
-    render json: @user, include: params[:include]
+    respond_to do |format|
+       format.html
+       format.json { render json: @user, include: params[:include] }
+     end
   end
+
+
 
   def create
     tweet = Tweet.new(tweet_params)

@@ -1,0 +1,6 @@
+
+<% tweets.each do |tweet| %>
+<h1><%= tweet.body %></h1>
+<%= link_to tweet.user.email, tweet.user%>
+
+<% end %>
