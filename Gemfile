@@ -15,6 +15,11 @@ gem 'rack-cors', require: 'rack/cors'
 gem 'rails-api'
 gem 'rails_12factor'
 gem 'pundit'
+gem 'materialize-sass'
+gem 'material_icons'
+gem 'uglifier', '>=1.3.0'
+gem 'jquery-rails', '~> 4.0', '>= 4.0.5'
+
 
 group :development do
   gem 'foreman'

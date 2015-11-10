@@ -1,6 +1,7 @@
 
 <% tweets.each do |tweet| %>
-<h1><%= tweet.body %></h1>
-<%= link_to tweet.user.email, tweet.user%>
-
+<div class="card-panel hoverable">
+<h4><%= tweet.body %></h4>
+<p class="right-align"><%= link_to tweet.user.email, tweet.user%></p>
+</div>
 <% end %>
